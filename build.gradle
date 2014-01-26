@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceSets {
+    behavior {
+        java {
+            srcDir 'src/behavior/java'
+        }
+        resources {
+            srcDir 'src/behavior/resources'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit',  version: '4.+'
+}
