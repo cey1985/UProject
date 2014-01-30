@@ -12,6 +12,11 @@ The module will provide an validator which validate an credit number
 - Input can contains numberic, whitespace, or 'hypen' only
 - All 'whitespace' or 'hypen' will be ignored or bear no meaning
 - The credit number check digit need to be validated according to Luhn algorithm
+    - Luhn algorithm can be referred below.
+    - You are not required to follow exact same steps as long as the result is correct
+    - http://en.wikipedia.org/wiki/Luhn_algorithm
+    - http://www.brainjar.com/js/validation/default2.asp
+    - http://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers
 - Consumer of the libary require to present meaningful error message to end user
 
 Design Consideration
