@@ -4,7 +4,7 @@
 package com.bankbusiness.common;
 
 /**
- * Stores all the error codes related in the project.
+ * Store all the error codes related in the project.
  * @author Cyber
  */
 public enum ErrorCode 
@@ -13,6 +13,7 @@ public enum ErrorCode
 	CREDITCARD_NUMBER_INVALID_FORMAT		(1001),
 	CREDITCARD_NUMBER_INVALID_NUMBER		(1002)
 	;
+	
 	private int m_errorCode;
 	
 	private ErrorCode(int errorCode)

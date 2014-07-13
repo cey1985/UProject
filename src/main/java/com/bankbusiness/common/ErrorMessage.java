@@ -4,10 +4,10 @@
 package com.bankbusiness.common;
 
 /**
- * Stores all the error messages that belongs to the project.
+ * Store all the error messages that belongs to the project.
  * @author Cyber
  */
-public class ErrorMessage 
+public abstract class ErrorMessage 
 {
 	public static final String INVALID_CHAR = "Invalid char";
 	public static final String INVALID_FORMAT = "Invalid format";
