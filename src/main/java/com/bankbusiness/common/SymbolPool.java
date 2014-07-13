@@ -14,4 +14,6 @@ public abstract class SymbolPool
 	public static final String WHITESPACE = " ";
 	public static final String COMMA = ",";
 	public static final String EMPTY = "";
+	public static final String SQUARE_LEFT_BRACKET = "[";
+	public static final String SQUARE_RIGHT_BRACKET = "]";
 }
