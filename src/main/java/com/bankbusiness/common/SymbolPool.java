@@ -7,10 +7,11 @@ package com.bankbusiness.common;
  * This pool stores the common symbol used in the project. * 
  * @author Cyber
  */
-public class SymbolPool 
+public abstract class SymbolPool 
 {
-	public static String COLON = ":";
-	public static String HYTHEN = "-";
-	public static String WHITESPACE = " ";
-	public static String COMMA = ",";
+	public static final String COLON = ":";
+	public static final String HYTHEN = "-";
+	public static final String WHITESPACE = " ";
+	public static final String COMMA = ",";
+	public static final String EMPTY = "";
 }
