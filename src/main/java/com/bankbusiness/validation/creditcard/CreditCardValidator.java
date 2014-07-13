@@ -55,9 +55,10 @@ public class CreditCardValidator implements IValidation, InitializingBean
 			m_ignorableCharacterList = Arrays.asList(DEFAULT_IGNORABLE_CHARS);
 		}
 		
+		String ignorableStr = StringUtils.join(m_ignorableCharacterList, SymbolPool.EMPTY);
 		StringBuilder ignorableCharsRegExpBuilder = new StringBuilder();
-		ignorableCharsRegExpBuilder.append(SymbolPool.SQUARE_LEFT_BRACKET)
-		.append(StringUtils.join(m_ignorableCharacterList, SymbolPool.EMPTY)).append(SymbolPool.SQUARE_RIGHT_BRACKET);
+		ignorableCharsRegExpBuilder.append(SymbolPool.SQUARE_LEFT_BRACKET).append(ignorableStr)
+			.append(SymbolPool.SQUARE_RIGHT_BRACKET);
 		
 		m_ignorableCharsPattern = Pattern.compile(ignorableCharsRegExpBuilder.toString());
 	}
