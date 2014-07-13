@@ -15,7 +15,7 @@ Then this account number should be able to pass the verfication
 Scenario: Validate the length account number which include some extra whitespace or hyphen characters. 
 Given the length of creditcard account number is 16
 And character(s) that can be ignored: whitespace,hyphon 
-When an account number of creditcard ' - 12345-6781  2345-658   -' is coming
+When an account number of creditcard ' - 12345-6781  2347-698   -' is coming
 Then this account number should be able to pass the verfication
 
 Scenario: Validate the length account number in which some of the characters are whitespace or hyphen.
