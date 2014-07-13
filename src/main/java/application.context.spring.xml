@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	<bean id="com.bankbusiness.validation.creditcard.CreditCardValidator" 
+	class="com.bankbusiness.validation.creditcard.CreditCardValidator" scope="singleton">
+		<property name="requiredNumberLength" value="16" />
+		<property name="ignorableCharacters">
+			<list>
+				<value> </value><!-- Set whitespace -->
+				<value>-</value><!-- Set hyphen -->
+			</list>
+		</property>
+	</bean>
+
+</beans>
