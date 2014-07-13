@@ -28,10 +28,11 @@ public class CreditCardValidatorTest
     private CreditCardValidator validator;
 
     @Before
-    public void setup() {
+    public void setup() throws Exception {
         validator = new CreditCardValidator();
         validator.setRequiredNumberLength(DEFAULT_REQUIRED_NUMBER_LENGTH);
         validator.setIgnorableCharacters(Arrays.asList(DEFAULT_IGNORABLE_CharacterS_LIST));
+        validator.afterPropertiesSet();
     }
 
     @Test
@@ -57,7 +58,7 @@ public class CreditCardValidatorTest
     	ValidationException exception = null;
     	try
     	{
-    		validator.validate(" - 12345-6781  2345-658   -");
+    		validator.validate(" - 12345-6781  2347-698   -");
     	}
         catch(ValidationException e)
         {
@@ -88,7 +89,7 @@ public class CreditCardValidatorTest
     {
     	try
     	{
-    		validator.validate("  123-45_6781234_7698   ");
+    		validator.validate("  123-45_67834_7698   ");
     		Assert.fail(FAILURE_MSG);
     	}
         catch(ValidationException e)
@@ -120,7 +121,7 @@ public class CreditCardValidatorTest
     {
     	try
     	{
-    		validator.validate("1234567812345678");
+    		validator.validate("1234567812345658");
     		Assert.fail(FAILURE_MSG);
     	}
         catch(ValidationException e)
