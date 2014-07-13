@@ -60,11 +60,12 @@ public class CreditCardValidatorCheckSteps
 	@Then("this account number should be able to $status the verfication")
 	@Alias("this account number should be able to $status the verfication: $errorCode-$errorMsg")
 	public void passTheVerification(@Named("status")String status, @Named("errorCode")int errorCode,
-			@Named("errorMsg")String errorMsg)
+			@Named("errorMsg")String errorMsg) throws Exception
 	{
 		m_validator = new CreditCardValidator();
 		m_validator.setRequiredNumberLength(m_requiredNumberLength);
 		m_validator.setIgnorableCharacters(m_ignorableCharacterList);
+		m_validator.afterPropertiesSet();
 		ValidationException exception = null;
 		
 		try
