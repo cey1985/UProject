@@ -155,11 +155,13 @@ public class CreditCardValidatorIntegrationTest
 		threadPool.shutdown();
 		while(!threadPool.isTerminated());
 		
+		// Verify if any case in any user failed
 		for (User oneUser : userContainer)
 		{
 			MatcherAssert.assertThat("User "+oneUser.getName() + ":\n" + oneUser.getResult().toString(), 0 == oneUser.getResult().length());
 		}
 		
+		// Verify only generate one instance of CreditCardValidator
 		String validatorObj = s_storeValidators.get(0);
 		
 		for (int i = 1; i < s_storeValidators.size(); i++)
