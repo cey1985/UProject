@@ -9,7 +9,13 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
+import com.bankbusiness.common.AlgorithmUtils;
 import com.bankbusiness.common.ErrorCode;
 import com.bankbusiness.common.ErrorMessage;
 import com.bankbusiness.common.SymbolPool;
@@ -20,7 +26,9 @@ import com.bankbusiness.validation.creditcard.CreditCardValidator;
  * Unit test cases for CreditCardValidator.
  * @author Cyber
  */
-public class CreditCardValidatorTest 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({AlgorithmUtils.class})
+public class CreditCardValidatorTest
 {
 	private static final String FAILURE_MSG = "Oops! Failure encountered unexpectedly";
 	private static final int DEFAULT_REQUIRED_NUMBER_LENGTH = 16;
@@ -28,16 +36,20 @@ public class CreditCardValidatorTest
     private CreditCardValidator validator;
 
     @Before
-    public void setup() throws Exception {
+    public void setup() throws Exception 
+    {
         validator = new CreditCardValidator();
         validator.setRequiredNumberLength(DEFAULT_REQUIRED_NUMBER_LENGTH);
         validator.setIgnorableCharacters(Arrays.asList(DEFAULT_IGNORABLE_CharacterS_LIST));
         validator.afterPropertiesSet();
+        
+        PowerMockito.mockStatic(AlgorithmUtils.class);
     }
 
     @Test
     public void testAvailableAccountNumber() 
     {
+    	PowerMockito.when(AlgorithmUtils.isAvailableCreditCardNumber(Mockito.anyString())).thenReturn(true);
     	ValidationException exception = null;
     	try
     	{
@@ -48,13 +60,14 @@ public class CreditCardValidatorTest
         	exception = e;
         }
     	
-    	MatcherAssert.assertThat(FAILURE_MSG, exception == null);
+    	MatcherAssert.assertThat(FAILURE_MSG, null == exception);
     	
     }
     
     @Test
     public void testAvailableAccountNumberContainedExtraIgnorableCharacters()
     {
+    	PowerMockito.when(AlgorithmUtils.isAvailableCreditCardNumber(Mockito.anyString())).thenReturn(true);
     	ValidationException exception = null;
     	try
     	{
@@ -65,7 +78,7 @@ public class CreditCardValidatorTest
         	exception = e;
         }
     	
-    	MatcherAssert.assertThat(FAILURE_MSG, exception == null);
+    	MatcherAssert.assertThat(FAILURE_MSG, null == exception);
     }
     
     @Test
@@ -119,6 +132,7 @@ public class CreditCardValidatorTest
     @Test
     public void testInvalidAccountNumberBreakTheAlgorithm()
     {
+    	PowerMockito.when(AlgorithmUtils.isAvailableCreditCardNumber(Mockito.anyString())).thenReturn(false);
     	try
     	{
     		validator.validate("1234567812345658");
